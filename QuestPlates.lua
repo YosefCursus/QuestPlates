@@ -110,7 +110,10 @@ function GetQuestProgress(unitID)
 	local questID
 	for i = 3, #tooltipData.lines do
 		local line = tooltipData.lines[i]
-		TooltipUtil.SurfaceArgs(line)
+		-- Check if TooltipUtil and TooltipUtil.SurfaceArgs are available before calling
+		if TooltipUtil and TooltipUtil.SurfaceArgs then
+			TooltipUtil.SurfaceArgs(line)
+		end
 
 		if line.type == 17 and line.id then -- Tooltip line is a quest header..?
 			--if not text then return end
